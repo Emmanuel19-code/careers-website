@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAREERS WEBSITE</title>
+    <link
+      rel="icon"
+      href="https://img.freepik.com/free-photo/characters-looking-job_1156-558.jpg?t=st=1716723601~exp=1716727201~hmac=3767f66b7ab9ee48751048e6253d6eecb902392c3d7f5ab8de1809ff9dcf60fc&w=996"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <img src="/static/characters-looking-job.jpg" alt="" class="img-fluid" />
+    <div class="container">
+      <h1 class="text-center mt-2 mb-2">Emma Career's</h1>
+      <div class="d-flex flex-row mb-4" style="padding: 5px">
+        <p class="lead">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis
+          officia doloremque, voluptatibus perspiciatis, dolores provident
+          corrupti cumque optio quis suscipit voluptate amet ipsa? Eaque
+          mollitia voluptate, eveniet perspiciatis veritatis quia? Ipsam, odio
+          error sint quam asperiores totam tempora voluptas corporis corrupti
+          vero sunt pariatur, animi architecto! Tempora deleniti quidem ut
+          consectetur voluptas a id nam. Debitis totam nam ullam. Quo. Mollitia
+          nihil eaque exercitationem quas incidunt unde dicta deleniti maiores.
+          Tempora, quaerat quibusdam recusandae maxime nisi delectus ea dolorem
+          necessitatibus voluptate laudantium soluta iure veritatis voluptatum
+          ab perferendis? Nostrum, eum!
+        </p>
+        <div class="">
+          <img
+            src="/static/medium-shot-people-working-office-together.jpg"
+            alt=""
+            class="d-none d-md-block img-fluid rounded"
+          />
+        </div>
+      </div>
+      <h2 class="text-center mt-2 mb-3">JOB OPENINGS</h2>
+      <div>{% for job in jobs %} {% include 'jobitem.html' %} {% endfor %}</div>
+      <div class="text-center">
+        <a
+          href=" mailto:emmanueladane52@gmail.com?subject=Question%20about%20Job%20Openings&body=My%20name%20%3A%20%3Cyour%20name%3E%0D%0AMy%20question%20%3A%20%3Center%20question%3E "
+          class="btn btn-primary btn-lg text-center"
+          >Contact us</a
+        >
+        <p class="mt-4">CopyRight 2024, Emmanuel</p>
+      </div>
+    </div>
+  </body>
+</html>
