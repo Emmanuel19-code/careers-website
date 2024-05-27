@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    {% include 'bootstrap.html' %}
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="container">
+      {% for job in job %}
+      <div class="mt-4">
+        <h3 class="mb-2">{{ job['job_title'] }}</h3>
+        <p class="lead mt-0">{{ job.job_location }}</p>
+        <h3>Salary</h3>
+        <p>{{ job.currency }} <span> {{ job.job_salary }} </span></p>
+        <h3>Responsibilities</h3>
+        <p>{{ job.job_responsibilities }}</p>
+        <h3>Requirements</h3>
+        {% for requirements in job.job_requirements.split(",") %}
+        <ul>
+            <li>{{ requirements}}</li>
+        </ul>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

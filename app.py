@@ -1,94 +1,29 @@
 from flask import Flask, jsonify,render_template
 #the render_template is used to render templates in flask
+from database import jobs_data,load_particular_job
 app = Flask(__name__)
 
 
 
-JOBS =[
-    {
-        "id": 1,
-        "title": "Software Engineer",
-        "location": "San Francisco, CA",
-        "Salary": "$120,000"
-    },
-    {
-        "id": 2,
-        "title": "Data Scientist",
-        "location": "New York, NY",
-        "Salary": "$110,000"
-    },
-    {
-        "id": 3,
-        "title": "Product Manager",
-        "location": "Austin, TX",
-        "Salary": "$105,000"
-    },
-    {
-        "id": 4,
-        "title": "UX Designer",
-        "location": "Seattle, WA",
-        "Salary": "$95,000"
-    },
-    {
-        "id": 5,
-        "title": "DevOps Engineer",
-        "location": "Remote",
-        "Salary": "$100,000"
-    },
-    {
-        "id": 6,
-        "title": "QA Engineer",
-        "location": "Chicago, IL",
-        "Salary": "$85,000"
-    },
-    {
-        "id": 7,
-        "title": "Marketing Specialist",
-        "location": "Boston, MA",
-        "Salary": "$70,000"
-    },
-    {
-        "id": 8,
-        "title": "Sales Manager",
-        "location": "Los Angeles, CA",
-        "Salary": "$90,000"
-    },
-    {
-        "id": 9,
-        "title": "HR Coordinator",
-        "location": "Miami, FL",
-        "Salary": "$65,000"
-    },
-    {
-        "id": 10,
-        "title": "Business Analyst",
-        "location": "Denver, CO",
-        "Salary": "$80,000"
-    },
-     {
-    "id": 11,
-    "title": "Quality Assurance Engineer",
-    "location": "Atlanta, GA",
-  },
-]
 
 
 @app.route("/")
 def hello():
-    return render_template("home.html",jobs=JOBS)
+    return render_template("home.html",jobs=jobs_data)
   
 
-@app.route("/me")
-def me():
-    return "this is me"
+
   
 
-#listing data in json format
-@app.route("/api/jobs")
-def jobs_list():
-    return jsonify(JOBS)
-  
-  
+@app.route("/api/job/<job_id>")
+def particular_job(job_id):
+    job = load_particular_job(job_id=job_id)
+    if not job:
+        return "Job Not available",404
+    else:
+        return render_template("jobitempage.html",job=job)
+
+
 if __name__ == "__main__":
    app.run(host='0.0.0.0',debug=True)
    
